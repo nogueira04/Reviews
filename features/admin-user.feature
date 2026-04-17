@@ -32,6 +32,9 @@ Feature: Admin user
     Then the news post becomes visible on the common users feed automatically
 
   Scenario: admin edits an existing user email with success
-    Given the admin opens the user management screen
-    When the admin edits a user email and confirms the change
-    Then the user record is updated and the user is notified by email
+    Given the admin is authenticated and opens the user management screen
+    And the target user has an active account
+    When the admin edits the user email and confirms the change
+    Then the user record is updated with the new email
+    And the user receives a confirmation email with a verification link
+    And the audit log stores the admin username, the old email and the new email
