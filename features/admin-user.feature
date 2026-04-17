@@ -4,3 +4,13 @@ Feature: Admin user
   I want to create, remove and edit users, delete common user accounts,
   register artists, authors, voice actors, and publish news
   So that the content, catalog and community of the platform stay organised
+
+  Scenario: ban a common user successfully
+    Given the admin identifies a user who violated the rules
+    When the admin bans the user from the moderation panel
+    Then the user content is hidden from everyone but not deleted
+
+  Scenario: create a news post with tags and see it on the feed
+    Given the admin publishes a news post with free tags
+    When the news post is created
+    Then the news post shows up on the common users feed
