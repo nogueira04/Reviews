@@ -24,3 +24,8 @@ Feature: Admin user
     Given the admin opens the artist registration form
     When the admin submits the form with an empty name field
     Then the system rejects the submission and shows a required field message
+
+  Scenario: admin schedules a news post for future publication
+    Given the admin drafts a news post and picks a future publication date
+    When the scheduled time arrives
+    Then the news post becomes visible on the common users feed automatically
