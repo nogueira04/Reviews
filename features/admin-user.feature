@@ -25,3 +25,13 @@ Feature: Admin user
     When the admin submits the form with an empty name field
     Then the system rejects the submission and shows a required field message
     And the form keeps the values the admin already filled for the other fields
+
+  Scenario: admin schedules a news post for future publication
+    Given the admin drafts a news post and picks a future publication date
+    When the scheduled time arrives
+    Then the news post becomes visible on the common users feed automatically
+
+  Scenario: admin edits an existing user email with success
+    Given the admin opens the user management screen
+    When the admin edits a user email and confirms the change
+    Then the user record is updated and the user is notified by email
