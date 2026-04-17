@@ -43,3 +43,8 @@ Feature: Admin user
     Given the admin opens the artist registration form
     When the admin fills the name, role voice-actor and confirms
     Then the system persists the new voice actor in the catalog
+
+  Scenario: admin deletes a common user account permanently
+    Given the admin selects a common user with status active
+    When the admin confirms the permanent account deletion
+    Then the user account is removed and their content becomes inaccessible
